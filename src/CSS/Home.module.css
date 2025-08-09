@@ -1,0 +1,61 @@
+.container{
+    margin:0;
+    background-image:url('../Assets/Avenue\ Open\ Kitchen\ &\ Deli\ storefront.png');
+    width: 100vw;
+    height: 100vh;
+    box-sizing:border-box;
+    padding: 0%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    
+}
+.input{
+    background-color: rgb(23, 23, 23,0.7);
+    width:30%;
+    height: max-content;
+    margin-top: 15%;
+    padding:4%;
+    border-radius: 19px;
+    
+    
+    
+
+}
+.instruction{
+    display:block;
+    font-family: Arial, Helvetica, sans-serif;
+    color:ghostwhite;
+    margin-left: 35%;
+}
+.guestnumber{
+    display:block;
+     margin-left: 35%; 
+   
+
+}
+.tablenumber{
+    display:block;
+    margin-left: 35%; 
+}
+.confirmbutton{
+    padding:5px;
+    margin-left: 40%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(250, 246, 246);
+    background-color: rgb(171, 168, 168);
+    margin-top: 8%;
+    width:25%;
+}
+.error {
+    background-color: rgb(241, 11, 45);
+  color: rgb(230, 223, 223);
+  margin-bottom: 1px;
+  text-align: center;
+  font-family:'Times New Roman', Times, serif;
+  padding: 2%;
+  opacity: 1;
+  
+  
+}

@@ -1,0 +1,22 @@
+.container{
+    
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: medium;
+   
+    
+}
+.items{
+    width:65%;
+    border-bottom: 1px solid black;
+   
+    padding: 2%;
+    margin-top: 3px;
+    box-shadow: 2px 2px 2px black;
+}
+.enteredMods{
+   
+}

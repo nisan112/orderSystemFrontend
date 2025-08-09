@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { OrderObject } from "./OrderObject";
 import { Submission } from "./Submission";
+import styles from '../CSS/Summary.module.css';
 
 function Summary() {
   const { order, setOrder } = useContext(OrderObject);
@@ -75,7 +76,7 @@ function Summary() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Order Summary</h2>
       <p>
         <strong>Table Number:</strong> {order.tableNumber || "Not set"}
@@ -138,8 +139,8 @@ function Summary() {
       {error && <p style={{ color: "red" }}>{error}</p>}
       {success && <p style={{ color: "green" }}>{success}</p>}
 
-      <button onClick={handleSubmit} disabled={loading}>
-        {loading ? "Submitting..." : "Done"}
+      <button onClick={handleSubmit} disabled={loading} className={styles.submitbutt}>
+        {loading ? "Submitting..." : "Submit"}
       </button>
     </div>
   );

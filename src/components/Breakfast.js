@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { OrderObject } from "./OrderObject";
 import { useNavigate } from "react-router-dom";
-import Summary from "./Summary";
 import { RequiredInputChecker } from "./RequiredInputChecker";
+import styles from '../CSS/Breakfast.module.css';
 
 function Breakfast() {
   RequiredInputChecker();
@@ -58,37 +58,41 @@ function Breakfast() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {/* Render clickable menu items */}
       {breakfastItems.map(item => (
-        <div
-          key={item.name}
-          className="item"
-          onClick={() => mods(item.name, item.price)}
-        >
-          <p>{item.name} - {item.price}</p>
+  <div
+    key={item.name}
+    className={styles.items}
+    onClick={() => mods(item.name, item.price)}
+  >
+    <p>{item.name}</p>
+
+    {/* Show note input only if this is the selected item */}
+    {selectedItem && selectedItem.name === item.name && showChild && (
+      <div>
+        <label>
+          Note:
+          <input
+            type="text"
+            className="enteredMods"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            onClick={e => e.stopPropagation()} // prevent div's onClick triggering again
+          />
+        </label>
+        <button onClick={(e) => { e.stopPropagation(); confirmFood(); }}>
+          OK
+        </button>
+        </div>
+      )}
         </div>
       ))}
 
-      {/* Show note input if item is selected */}
-      {showChild && (
-        <div>
-          <label>
-            Note:
-            <input
-              type="text"
-              className="enteredMods"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-            />
-          </label>
-          <button onClick={confirmFood}>OK</button>
-        </div>
-      )}
+     
+      
 
-      <div className="summary">
-        <Summary />
-      </div>
+      
     </div>
   );
 }

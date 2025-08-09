@@ -12,7 +12,9 @@ export function RequiredInputChecker() {
       location.pathname !== "/" &&
       (!order.tableNumber || !order.guestNumber)
     ) {
-      navigate("/", { replace: true });
+      navigate("/", { replace: true,
+         state: { error: "!!!  Please fill Table and Guest Number  !!!" }
+      });
     }
   }, [order, navigate, location]);
 }

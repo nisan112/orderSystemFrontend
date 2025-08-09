@@ -1,0 +1,14 @@
+.container{
+ 
+   padding: 6%;
+   width: 100%;
+   margin-left: 10%;
+}
+.submitbutt{
+    padding:3%;
+    margin-left: 25%;
+    width:50%;
+    border-radius: 11px;
+    border: none;
+    background-color: aquamarine;
+}
