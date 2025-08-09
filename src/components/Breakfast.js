@@ -3,8 +3,35 @@ import { OrderObject } from "./OrderObject";
 import { useNavigate } from "react-router-dom";
 import { RequiredInputChecker } from "./RequiredInputChecker";
 import styles from '../CSS/Breakfast.module.css';
+import {
+  Breakfasts,
+  BreakfastSandwiches,
+  Sandwiches,
+  Salads,
+  HotPlates,
+  DeliSandwiches,
+  DeliPlates,
+  SideOrders,
+  Beverages
+} from '../components/Items';
 
-function Breakfast() {
+
+
+const menuMap = {
+  Breakfasts,
+  BreakfastSandwiches,
+  Sandwiches,
+  Salads,
+  HotPlates,
+  DeliSandwiches,
+  DeliPlates,
+  SideOrders,
+  Beverages,
+};
+
+
+function Breakfast({category}) {
+  const menuItem = menuMap[category] || [];
   RequiredInputChecker();
   const { order, setOrder } = useContext(OrderObject);
   const navigate = useNavigate();
@@ -13,16 +40,7 @@ function Breakfast() {
   const [note, setNote] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const breakfastItems = [
-    { name: "Egg", price: "$12" },
-    { name: "Bacon", price: "$15" },
-    { name: "Sausage", price: "$14" },
-    { name: "Peameal Bacon", price: "$16" },
-    { name: "Steak", price: "$25" },
-    { name: "Smoked Meat", price: "$18" },
-    { name: "Western Omlette", price: "$13" },
-    { name: "Dutch Omlette", price: "$13" },
-  ];
+  
 
   const mods = (itemName, price) => {
     if (selectedItem && selectedItem.name === itemName) {
@@ -60,7 +78,7 @@ function Breakfast() {
   return (
     <div className={styles.container}>
       {/* Render clickable menu items */}
-      {breakfastItems.map(item => (
+      {menuItem.map((item) => (
   <div
     key={item.name}
     className={styles.items}

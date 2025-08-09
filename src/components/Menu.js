@@ -10,11 +10,14 @@ import Summary from "./Summary";
 
 
 function Menu(){
+    const [selectedCategory, setSelectedCategory] = useState(null);
     RequiredInputChecker();
     const{order} = useContext(OrderObject);
     const nav = useNavigate();
     const[showMenu, setShowMenu] = useState(false);
-    const fullMenuOpening = () => {
+    const fullMenuOpening = (category) => {
+        console.log("catrgory is",{category});
+        setSelectedCategory(category)
     setShowMenu(!showMenu);
 };
 
@@ -28,16 +31,22 @@ function Menu(){
             </div>
             <div className={styles.lowercont}>
                  <div className={styles.menuListing}>
-                <button onClick={fullMenuOpening}>Breakfasts</button>
-                <button>Sandwiches</button>
-                <button>Hot Plates</button>
-                <button>Sides</button>
-                <button>Deli</button>
-                <button>Burgers</button>
-                 <button>Salad</button>
-                  <button>Drink</button>
+                <button onClick={() => fullMenuOpening("Breakfasts")}>Breakfasts</button>
+<button onClick={() => fullMenuOpening("BreakfastSandwiches")}>Breakfast Sandwiches</button>
+<button onClick={() => fullMenuOpening("Sandwiches")}>Sandwiches</button>
+<button onClick={() => fullMenuOpening("HotPlates")}>Hot Plates</button>
+<button onClick={() => fullMenuOpening("SideOrders")}>Sides</button>
+<button onClick={() => fullMenuOpening("DeliSandwiches")}>Deli Sandwiches</button>
+<button onClick={() => fullMenuOpening("DeliPlates")}>Deli Plates</button>
+<button onClick={() => fullMenuOpening("Salads")}>Salads</button>
+<button onClick={() => fullMenuOpening("Beverages")}>Drinks</button>
+
       </div>
-       {showMenu && <div className={styles.breakfast}><Breakfast /> </div>}
+      {showMenu && selectedCategory && (
+  <div className={styles.menuContainer}>
+    <Breakfast category={selectedCategory} />
+  </div>
+)}
        <div className={styles.summary}>
         <Summary />
       </div>
